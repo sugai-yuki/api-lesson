@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <input type="text" v-model="zipCode">
-    <button>住所自動入力</button>
+    <button @click="zipCodeChange()">住所自動入力</button>
     <p>Address：{{address}}</p>
   </div>
 </template>
@@ -15,10 +15,12 @@ export default{
       address: "",
     };
   },
-  async created(){
-     let api = await axios.get(`https://apis.postcode-jp.com/api/v4/postcodes?filter=postcode==2790031&apiKey=(apikey)`);
-     this.data = api.data;
-     this.address = this.data.allAddress;
+  methods: {
+    async zipCodeChange() { 
+      let api = await axios.get(`https://apis.postcode-jp.com/api/v4/postcodes/1000001?apiKey=(apikey)`);
+      this.data = api.data;
+      this.address = this.data.allAddress;
+    }
   }
 };
 
@@ -27,3 +29,4 @@ export default{
 <style>
 
 </style>
+
