@@ -17,9 +17,9 @@ export default{
   },
   methods: {
     async zipCodeChange() { 
-      let api = await axios.get(`https://apis.postcode-jp.com/api/v4/postcodes/1000001?apiKey=(apikey)`);
+      let api = await axios.get(`https://apis.postcode-jp.com/api/v4/postcodes/${this.zipCode}?apiKey=mAsjDYpxxtqT7S33f7RegxyCMK4VXBFLrqJxPbd`);
       this.data = api.data;
-      this.address = this.data.allAddress;
+      this.address = this.data[0].allAddress;
     }
   }
 };
